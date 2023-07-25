@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_room"
-        android:name="com.sameer.arduinocontroller.ui.HomeFragment"
+        android:name="ui.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/home_fragment" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/navigation_timer"
-        android:name="com.sameer.arduinocontroller.ui.timer.TimerFragment"
+        android:name="ui.timer.TimerFragment"
         android:label="@string/title_timer"
         tools:layout="@layout/timer_fragment" >
         <action
@@ -27,13 +27,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.sameer.arduinocontroller.ui.Rooms.RoomsFragment"
+        android:name="ui.Rooms.RoomsFragment"
         android:label="@string/title_room"
         tools:layout="@layout/rooms_fragment" />
 
     <fragment
         android:id="@+id/navigation_favourite"
-        android:name="com.sameer.arduinocontroller.ui.favourite.FavouriteFragment"
+        android:name="ui.favourite.FavouriteFragment"
         android:label="@string/title_favourite"
         tools:layout="@layout/favourite_fragment" >
 
