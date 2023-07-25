@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RoomItem"
+    android:background="@color/fragments_bg_color">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/left_guideline"
+        app:layout_constraintGuide_percent=".15"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/right_guideline"
+        app:layout_constraintGuide_percent=".85"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.37" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.48" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/image_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.40" />
+
+    <ImageView
+        android:id="@+id/roomImage"
+        android:transitionName="robot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/hallroom"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/image_guideline"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/roomImage"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        android:layout_marginTop="-20dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="15dp"
+        android:backgroundTint="#A5DEF1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:background="@android:color/transparent">
+            <LinearLayout
+                android:layout_weight="0.333"
+                android:layout_marginStart="3dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginEnd="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:weightSum="1"
+                android:background="@android:color/transparent"
+            >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.9"
+                    android:scaleType="fitXY"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/temp"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_weight="0.1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperature"
+                    android:layout_gravity="center_horizontal|center_vertical">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/timer_click"
+                android:layout_weight="0.333"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:weightSum="1"
+                android:onClick="setTimer">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:padding="5dp"
+                    android:layout_weight="0.8"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/timer"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/timer_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="Timer"
+                    android:autoSizePresetSizes="uniform"
+                    android:layout_gravity="center_horizontal|center_vertical">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="0.333"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:weightSum="1"
+                android:onClick="favoutite"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/favourite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:padding="5dp"
+                    android:layout_weight="0.8"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/favourite"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/favourite"
+                    android:layout_gravity="center_horizontal|center_vertical">
+
+                </TextView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mainCard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/cardview"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardCornerRadius="15dp"
+        android:layout_marginTop="-20dp"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="@color/lightgray">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/login_box_bg_color">
+
+
+
+            <LinearLayout
+                android:id="@+id/card_vertical_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/room_loading"
+            style="?android:attr/progressBarStyle"
+            android:padding="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            android:indeterminateTint="@android:color/white"
+            android:clickable="false"
+            android:backgroundTint="@android:color/transparent"
+            />
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="28dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            app:cardCornerRadius="10dp"
+            android:padding="50px"
+            android:backgroundTint="#fffff5">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <androidx.cardview.widget.CardView
+                    android:layout_width="65dp"
+                    android:layout_height="match_parent"
+                    android:elevation="12dp"
+                    android:id="@+id/view1"
+                    app:cardCornerRadius="50dp"
+                    android:layout_margin="7dp"
+                    android:layout_centerHorizontal="true">
+                    <ImageView
+                        android:paddingTop="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="30dp"
+                        android:layout_height="80dp"
+                        android:layout_width="match_parent"
+                        android:id="@+id/imageView1"
+                        android:src="@drawable/bulb"/>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="10dp">
+                    <TextView
+                        android:id="@+id/appliance1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lamp 1"
+                        android:textSize="20dp"
+                        android:layout_gravity="center_vertical"/>
+                    <TextView
+                        android:id="@+id/appliance2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bed RoomItem 1"
+                        android:textSize="10dp"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:layout_weight="0.8"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/timer"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:layout_marginRight="75dp"
+                android:layout_gravity="center_vertical|right"/>
+
+            <ToggleButton
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/switcher"
+                android:layout_width="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/custom_checker"
+                android:textOff="@null"
+                android:textOn="@null" />
+
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="28dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:cardCornerRadius="10dp"
+                android:backgroundTint="#fffff5">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    >
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:elevation="12dp"
+                        android:id="@+id/view2"
+                        app:cardCornerRadius="50dp"
+                        android:layout_margin="7dp"
+                        android:layout_centerHorizontal="true">
+                        <ImageView
+                            android:paddingBottom="10dp"
+                            android:layout_height="80dp"
+                            android:layout_width="match_parent"
+                            android:id="@+id/imageView2"
+                            android:src="@drawable/tv"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="10dp">
+                        <TextView
+                            android:id="@+id/appliance3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TV 1"
+                            android:textSize="20dp"
+                            android:layout_gravity="center_vertical"/>
+                        <TextView
+                            android:id="@+id/appliance4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bed RoomItem 1"
+                            android:textSize="10dp"
+                            android:layout_gravity="center_vertical"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/timer"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_marginRight="75dp"
+                    android:layout_gravity="center_vertical|right"/>
+
+                <ToggleButton
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+
+                    android:id="@+id/switcher2"
+                    android:layout_width="50dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/custom_checker"
+                    android:textOff="@null"
+                    android:textOn="@null" />
+
+            </androidx.cardview.widget.CardView>
+
+
+
+-->

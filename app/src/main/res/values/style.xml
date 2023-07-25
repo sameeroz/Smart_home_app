@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyTimePicker" parent="android:style/Theme.Holo.Dialog.MinWidth">
+        <item name="android:backgroundTint">#FF0000</item>
+    </style>
+</resources>

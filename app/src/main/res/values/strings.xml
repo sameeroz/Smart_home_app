@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Smartek</string>
+    <string name="close">close</string>
+    <string name="open">open</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_home">Smart Home</string>
+    <string name="title_timer">Timer</string>
+    <string name="title_favourite">Favourite</string>
+    <string name="title_room">Rooms</string>
+    <string name="service_name">Timer Service</string>
+    <string name="title_activity_object_detection">ObjectDetection</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="tv_placeholder">Food Detection</string>
+    <string name="tv_description">Select a preset image or take a new photo</string>
+    <string name="tv_take_photo">Take photo</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="msg_token_fmt">hi sam</string>
+    <string name="title_activity_login">Login</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="card_name">Sameer Saeed Anwar</string>
+    <string name="home_name">Main Home</string>
+    <string name="favourite">Favourite</string>
+    <string name="title_activity_home_main">HomeMain</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="profile_picture">choose a Profile Picture</string>
+</resources>

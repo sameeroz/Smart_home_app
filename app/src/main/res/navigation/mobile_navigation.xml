@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_room">
+
+    <fragment
+        android:id="@+id/navigation_room"
+        android:name="com.sameer.arduinocontroller.ui.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_navigation_room_self"
+            app:destination="@id/navigation_room" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_timer"
+        android:name="com.sameer.arduinocontroller.ui.timer.TimerFragment"
+        android:label="@string/title_timer"
+        tools:layout="@layout/timer_fragment" >
+        <action
+            android:id="@+id/action_navigation_timer_self"
+            app:destination="@id/navigation_timer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.sameer.arduinocontroller.ui.Rooms.RoomsFragment"
+        android:label="@string/title_room"
+        tools:layout="@layout/rooms_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_favourite"
+        android:name="com.sameer.arduinocontroller.ui.favourite.FavouriteFragment"
+        android:label="@string/title_favourite"
+        tools:layout="@layout/favourite_fragment" >
+
+    </fragment>
+</navigation>

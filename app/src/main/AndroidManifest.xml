@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sameer.arduinocontroller">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ArduinoController">
+        <activity android:name=".Profile"></activity>
+        <activity
+            android:name=".Login"
+            android:label="@string/title_activity_login"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".MyFirebaseMessaging"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".FoodDetection" />
+
+        <receiver
+            android:name=".Devices_ReceiverCall_Classes.DeviceReceiverCall5"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="DeviceTimer5" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".Devices_ReceiverCall_Classes.DeviceReceiverCall4"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="DeviceTimer4" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".Devices_ReceiverCall_Classes.DeviceReceiverCall3"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="DeviceTimer3" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".Devices_ReceiverCall_Classes.DeviceReceiverCall2"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="DeviceTimer2" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Devices_Service_Classes.DeviceTimer5"
+            android:enabled="true"
+            android:exported="true"
+            android:label="Device Timer"
+            android:process=":TimerServiceProcess" />
+        <service
+            android:name=".Devices_Service_Classes.DeviceTimer4"
+            android:enabled="true"
+            android:exported="true"
+            android:label="Device Timer"
+            android:process=":TimerServiceProcess" />
+        <service
+            android:name=".Devices_Service_Classes.DeviceTimer3"
+            android:enabled="true"
+            android:exported="true"
+            android:label="Device Timer"
+            android:process=":TimerServiceProcess" />
+        <service
+            android:name=".Devices_Service_Classes.DeviceTimer2"
+            android:enabled="true"
+            android:exported="true"
+            android:label="Device Timer"
+            android:process=":TimerServiceProcess" />
+
+        <receiver
+            android:name=".Devices_ReceiverCall_Classes.DeviceReceiverCall1"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="DeviceTimer1" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Devices_Service_Classes.DeviceTimer1"
+            android:enabled="true"
+            android:exported="true"
+            android:label="Device Timer"
+            android:process=":TimerServiceProcess" />
+
+        <receiver
+            android:name=".Room_Receiver_Call_Classes.ReceiverCall6"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="ServiceStopped6" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".Room_Receiver_Call_Classes.ReceiverCall5"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="ServiceStopped5" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".Room_Receiver_Call_Classes.ReceiverCall4"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="ServiceStopped4" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Room_Service_Classes.TimerService6"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/service_name"
+            android:process=":TimerServiceProcess" />
+        <service
+            android:name=".Room_Service_Classes.TimerService5"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/service_name"
+            android:process=":TimerServiceProcess" />
+        <service
+            android:name=".Room_Service_Classes.TimerService4"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/service_name"
+            android:process=":TimerServiceProcess" />
+
+        <receiver
+            android:name=".Room_Receiver_Call_Classes.ReceiverCall3"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="ServiceStopped3" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Room_Service_Classes.TimerService3"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/service_name"
+            android:process=":TimerServiceProcess" />
+        <service
+            android:name=".Room_Service_Classes.TimerService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/service_name"
+            android:process=":TimerServiceProcess" />
+
+        <receiver
+            android:name=".Room_Receiver_Call_Classes.ReceiverCall"
+            android:permission="TODO">
+            <intent-filter>
+                <action android:name="ServiceStopped" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Room_Service_Classes.TimerService2"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/service_name"
+            android:process=":TimerServiceProcess" />
+
+        <receiver android:name=".Room_Receiver_Call_Classes.ReceiverCall2">
+            <intent-filter>
+                <action android:name="ServiceStopped2" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".RoomItem" />
+        <activity android:name=".Settings" />
+        <activity android:name=".Main" />
+    </application>
+
+</manifest>

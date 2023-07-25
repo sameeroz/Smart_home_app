@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primarybgcolor">#4D70AFCE</color>
+    <color name="primary_text_color">#4189ab</color>
+    <color name="text_color">#A5DEF1</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#99000000</color>
+    <color name="lightBlack">#44000000</color>
+    <color name="favourite_card_view_color">#26000000</color>
+    <color name="lightgray">#bfbcbb</color>
+    <color name="dialog_color">#B3bfbcbb</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="cardview_color">#fffff5</color>
+    <color name="navigation_header_color" >#4189ab</color>
+    <color name="green">#48ea8b</color>
+    <color name="red">#ffff4444</color>
+
+    <color name="nav_bg_color">#4189ab</color>
+    <color name="fragments_bg_color">#A6c2cdd2</color>
+    <color name="login_box_bg_color">#4D70AFCE</color>
+    <color name="login_btn_color">#4189ab</color>
+    <color name="device_card_bgcolor">#A5DEF1</color>
+    <color name="weather_cardview_color">#76b1cf</color>
+</resources>
