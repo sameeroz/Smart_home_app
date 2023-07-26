@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ArduinoController">
+        android:theme="@style/Theme.smart_home">
         <activity android:name="com.smart_home.Profile" />
         <activity
             android:name="com.smart_home.Login"
