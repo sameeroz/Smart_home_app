@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.sameer.smart_home">
+    package="com.smart_home">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,9 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ArduinoController">
-        <activity android:name="com.sameer.smart_home.Profile"></activity>
+        <activity android:name="com.smart_home.Profile" />
         <activity
-            android:name="com.sameer.smart_home.Login"
+            android:name="com.smart_home.Login"
             android:label="@string/title_activity_login"
             android:exported="true">
             <intent-filter>
@@ -29,17 +28,17 @@
         </activity>
 
         <service
-            android:name="com.sameer.smart_home.MyFirebaseMessaging"
+            android:name="com.smart_home.MyFirebaseMessaging"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name="com.sameer.smart_home.FoodDetection" />
+        <activity android:name="com.smart_home.FoodDetection" />
 
         <receiver
-            android:name="Devices_ReceiverCall_Classes.DeviceReceiverCall5"
+            android:name="com.smart_home.Devices_ReceiverCall_Classes.DeviceReceiverCall5"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -47,7 +46,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="Devices_ReceiverCall_Classes.DeviceReceiverCall4"
+            android:name="com.smart_home.Devices_ReceiverCall_Classes.DeviceReceiverCall4"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -55,7 +54,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="Devices_ReceiverCall_Classes.DeviceReceiverCall3"
+            android:name="com.smart_home.Devices_ReceiverCall_Classes.DeviceReceiverCall3"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -63,7 +62,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="Devices_ReceiverCall_Classes.DeviceReceiverCall2"
+            android:name="com.smart_home.Devices_ReceiverCall_Classes.DeviceReceiverCall2"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -72,32 +71,32 @@
         </receiver>
 
         <service
-            android:name="Devices_Service_Classes.DeviceTimer5"
+            android:name="com.smart_home.Devices_Service_Classes.DeviceTimer5"
             android:enabled="true"
             android:exported="true"
             android:label="Device Timer"
             android:process=":TimerServiceProcess" />
         <service
-            android:name="Devices_Service_Classes.DeviceTimer4"
+            android:name="com.smart_home.Devices_Service_Classes.DeviceTimer4"
             android:enabled="true"
             android:exported="true"
             android:label="Device Timer"
             android:process=":TimerServiceProcess" />
         <service
-            android:name="Devices_Service_Classes.DeviceTimer3"
+            android:name="com.smart_home.Devices_Service_Classes.DeviceTimer3"
             android:enabled="true"
             android:exported="true"
             android:label="Device Timer"
             android:process=":TimerServiceProcess" />
         <service
-            android:name="Devices_Service_Classes.DeviceTimer2"
+            android:name="com.smart_home.Devices_Service_Classes.DeviceTimer2"
             android:enabled="true"
             android:exported="true"
             android:label="Device Timer"
             android:process=":TimerServiceProcess" />
 
         <receiver
-            android:name="Devices_ReceiverCall_Classes.DeviceReceiverCall1"
+            android:name="com.smart_home.Devices_ReceiverCall_Classes.DeviceReceiverCall1"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -106,7 +105,7 @@
         </receiver>
 
         <service
-            android:name="Devices_Service_Classes.DeviceTimer1"
+            android:name="com.smart_home.Devices_Service_Classes.DeviceTimer1"
             android:enabled="true"
             android:exported="true"
             android:label="Device Timer"
@@ -199,9 +198,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="com.sameer.smart_home.RoomItem" />
-        <activity android:name="com.sameer.smart_home.Settings" />
-        <activity android:name="com.sameer.smart_home.Main" />
+        <activity android:name="com.smart_home.RoomItem" />
+        <activity android:name="com.smart_home.Settings" />
+        <activity android:name="com.smart_home.Main" />
     </application>
 
 </manifest>
