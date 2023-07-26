@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "615213162882",
+    "project_id": "smartek-35f6f",
+    "storage_bucket": "smartek-35f6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615213162882:android:eb2c0c78f128da0c23ef9b",
+        "android_client_info": {
+          "package_name": "com.smart_home"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615213162882-ri7npsvuh6vuvonmh7re0s8kcnec3oeh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6Diask9IGqyotZV9IDXaWvhspni6EXls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "615213162882-ri7npsvuh6vuvonmh7re0s8kcnec3oeh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
