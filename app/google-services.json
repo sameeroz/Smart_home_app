@@ -1,8 +1,8 @@
 {
   "project_info": {
-    "project_number": "615213162882",
-    "project_id": "smartek-35f6f",
-    "storage_bucket": "smartek-35f6f.appspot.com"
+    "project_number": "**enter your project number here**",
+    "project_id": "**enter your project id here**",
+    "storage_bucket": "**enter your project url here**"
   },
   "client": [
     {

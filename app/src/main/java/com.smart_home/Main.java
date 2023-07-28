@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -25,7 +24,6 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
-//import com.sameer.smart_home.R;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -35,6 +33,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import nl.joery.animatedbottombar.AnimatedBottomBar;
+
 
 public class Main extends AppCompatActivity {
 
