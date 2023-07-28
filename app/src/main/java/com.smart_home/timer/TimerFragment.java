@@ -50,7 +50,7 @@ public class TimerFragment extends Fragment {
     private ui.timer.TimerViewModel mViewModel;
     LinearLayout linearLayout;
     TextView txt;
-    Timer devtimer;
+    Timer devTimer;
     public TimerTask timerTask;
     double time1, time2, time3, time4, time5;
     private int[] imageList = {R.drawable.bulb, R.drawable.tv,R.drawable.socket};
@@ -73,47 +73,47 @@ public class TimerFragment extends Fragment {
 
         //linearLayout.addView(cardView);  // insert the full card into outer linear layout
 
-         if (deviceFileReader("DeviceTimer1") != null)
-         {
-             txt.setVisibility(View.GONE);
-             String[] data;
-             data = deviceFileReader("DeviceTimer1");
-             linearLayout.addView(customCardView(data[0], data[1],
-                     Integer.parseInt(data[2]),DeviceTimer1.class,"DeviceTimer1",0));
-         }
-        if (deviceFileReader("DeviceTimer2") != null)
-        {
-            txt.setVisibility(View.GONE);
-            String[] data;
-            data = deviceFileReader("DeviceTimer2");
-
-            linearLayout.addView(customCardView(data[0], data[1],
-                    Integer.parseInt(data[2]), DeviceTimer2.class,"DeviceTimer2",1));
-        }
-        if (deviceFileReader("DeviceTimer3") != null)
-        {
-            txt.setVisibility(View.GONE);
-            String[] data;
-            data = deviceFileReader("DeviceTimer3");
-            linearLayout.addView(customCardView(data[0], data[1],
-                    Integer.parseInt(data[2]), DeviceTimer3.class,"DeviceTimer3",2));
-        }
-        if (deviceFileReader("DeviceTimer4") != null)
-        {
-            txt.setVisibility(View.GONE);
-            String[] data;
-            data = deviceFileReader("DeviceTimer4");
-            linearLayout.addView(customCardView(data[0], data[1],
-                    Integer.parseInt(data[2]), DeviceTimer4.class,"DeviceTimer4",3));
-        }
-        if (deviceFileReader("DeviceTimer5") != null)
-        {
-            txt.setVisibility(View.GONE);
-            String[] data;
-            data = deviceFileReader("DeviceTimer5");
-            linearLayout.addView(customCardView(data[0], data[1],
-                    Integer.parseInt(data[2]), DeviceTimer5.class,"DeviceTimer5",4));
-        }
+//         if (deviceFileReader("DeviceTimer1") != null)
+//         {
+//             txt.setVisibility(View.GONE);
+//             String[] data;
+//             data = deviceFileReader("DeviceTimer1");
+//             linearLayout.addView(customCardView(data[0], data[1],
+//                     Integer.parseInt(data[2]),DeviceTimer1.class,"DeviceTimer1",0));
+//         }
+//        if (deviceFileReader("DeviceTimer2") != null)
+//        {
+//            txt.setVisibility(View.GONE);
+//            String[] data;
+//            data = deviceFileReader("DeviceTimer2");
+//
+//            linearLayout.addView(customCardView(data[0], data[1],
+//                    Integer.parseInt(data[2]), DeviceTimer2.class,"DeviceTimer2",1));
+//        }
+//        if (deviceFileReader("DeviceTimer3") != null)
+//        {
+//            txt.setVisibility(View.GONE);
+//            String[] data;
+//            data = deviceFileReader("DeviceTimer3");
+//            linearLayout.addView(customCardView(data[0], data[1],
+//                    Integer.parseInt(data[2]), DeviceTimer3.class,"DeviceTimer3",2));
+//        }
+//        if (deviceFileReader("DeviceTimer4") != null)
+//        {
+//            txt.setVisibility(View.GONE);
+//            String[] data;
+//            data = deviceFileReader("DeviceTimer4");
+//            linearLayout.addView(customCardView(data[0], data[1],
+//                    Integer.parseInt(data[2]), DeviceTimer4.class,"DeviceTimer4",3));
+//        }
+//        if (deviceFileReader("DeviceTimer5") != null)
+//        {
+//            txt.setVisibility(View.GONE);
+//            String[] data;
+//            data = deviceFileReader("DeviceTimer5");
+//            linearLayout.addView(customCardView(data[0], data[1],
+//                    Integer.parseInt(data[2]), DeviceTimer5.class,"DeviceTimer5",4));
+//        }
 
         return root;
     }
@@ -186,14 +186,14 @@ public class TimerFragment extends Fragment {
     public void onResume() {
         super.onResume();
         getContext().registerReceiver(broadcastReceiver, new IntentFilter(DeviceTimer1.Timer_Countdown));
-        Log.i("TAG", "Registered  Broadcast reciever");
+        Log.i("TAG", "Registered  Broadcast receiver");
     }
 
     @Override
     public void onPause() {
         super.onPause();
         getContext().unregisterReceiver(broadcastReceiver);
-        Log.i("TAG", "Unregistered  Broadcast reciever");
+        Log.i("TAG", "Unregistered  Broadcast receiver");
     }
 
     @Override
@@ -287,7 +287,7 @@ public class TimerFragment extends Fragment {
         timer.setLayoutParams(timer_param);
         timer.setText("00:00:00");
         timer.setTextSize(21);
-        devtimer = new Timer();
+        devTimer = new Timer();
         timerTask = new TimerTask()
                                             {
                           @Override
@@ -324,7 +324,7 @@ public class TimerFragment extends Fragment {
 
                       };
 
-        devtimer.scheduleAtFixedRate(timerTask, 0 ,1000);
+        devTimer.scheduleAtFixedRate(timerTask, 0 ,1000);
 
         timer.setGravity(Gravity.CENTER | Gravity.RIGHT);
         //inner_linearLayout.addView(timer);

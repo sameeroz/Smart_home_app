@@ -45,8 +45,8 @@ public class Main extends AppCompatActivity {
     AnimatedBottomBar animatedBottomBar;
     ImageView profilePic;
     TextView profileName;
-    String ip = "192.168.1.130";
-    static  String IP = "192.168.1.130";
+//    String ip = "192.168.1.130";
+//    static  String IP = "192.168.1.130";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -62,19 +62,19 @@ public class Main extends AppCompatActivity {
         action_toolbar = findViewById(R.id.toolbar_main);
         navigationView = findViewById(R.id.navigation_views);
         animatedBottomBar = findViewById(R.id.bottom_bar);
-        //Toast.makeText(getApplicationContext(), navigationView.getHeaderCount()+"", Toast.LENGTH_SHORT).show();
         ConstraintLayout v = (ConstraintLayout) navigationView.getHeaderView(0);
         CardView vv = (CardView) v.getChildAt(0);
         LinearLayout ll = (LinearLayout) vv.getChildAt(0);
         profilePic = (ImageView) ll.getChildAt(0);
 
+        //profile picture in drawer
         File internalStorageDir = getFilesDir();
         File alice = new File(internalStorageDir, "profile Picture.png");
         FileInputStream fos = null;
         try {
             fos = new FileInputStream(alice);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
 
         if(fos != null)
@@ -89,7 +89,6 @@ public class Main extends AppCompatActivity {
         animatedBottomBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
             @Override
             public void onTabSelected(int i, @Nullable AnimatedBottomBar.Tab tab, int i1, @NotNull AnimatedBottomBar.Tab tab1) {
-
 
                switch (i1)
                {
@@ -115,7 +114,7 @@ public class Main extends AppCompatActivity {
 
             @Override
             public void onTabReselected(int i, @NotNull AnimatedBottomBar.Tab tab) {
-                System.out.println("the baaaaaaaaaaar reselecteed"+i);
+                System.out.println("The bar reselected");
             }
         });
 
@@ -133,27 +132,25 @@ public class Main extends AppCompatActivity {
             switch (item.getTitle().toString())
             {
                 case "Settings":
-                    //i();
-                    break;
                 case "Contact us":
-                    System.out.println("ccccccc");
                     break;
                 case "Food Detector":
                     Intent i = new Intent(getApplicationContext(), FoodDetection.class);
                     startActivity(i);
                     break;
                 default:
-                    System.out.println("fffff");
             }
 
             return false;
         });
 
-        // Hall smart_home.RoomItem 1  Initilaizer
+        // Adding the rooms details manually without fetching from API--------------->
 
+
+        // Hall room 1  Initializer
         ModelWholeRoom m = new ModelWholeRoom();
         m.roomImage = R.drawable.hallroom;
-        m.roomName = "Hall smart_home.RoomItem";
+        m.roomName = "Hall room";
         m.turnOnInstructions = "turnOnHallRoom";
         m.turnOffInstructions = "turnOffHallRoom";
         m.isFavourite = true;
@@ -168,14 +165,13 @@ public class Main extends AppCompatActivity {
 
         RoomControl.allRoomsData.add(m);
 
-
-        //Living smart_home.RoomItem 2
+        //Living room 2
 
         ModelWholeRoom m1 = new  ModelWholeRoom();
         m1.roomImage = R.drawable.livingroom;
-        m1.roomName = "Living smart_home.RoomItem";
-        m1.turnOnInstructions = "turnOnLivingRoom";
-        m1.turnOffInstructions = "turnOffLivingRoom";
+        m1.roomName = "Living room 1";
+        m1.turnOnInstructions = "turnOnLivingRoom1";
+        m1.turnOffInstructions = "turnOffLivingRoom1";
         m1.isFavourite = false;
 
 
@@ -196,7 +192,7 @@ public class Main extends AppCompatActivity {
 
         ModelWholeRoom m2 = new  ModelWholeRoom();
         m2.roomImage = R.drawable.bedroom;
-        m2.roomName = "Bed smart_home.RoomItem 1";
+        m2.roomName = "Bed room 1";
         m2.turnOnInstructions = "turnOnBedRoom1";
         m2.turnOffInstructions = "turnOffBedRoom1";
         m2.isFavourite = false;
@@ -219,7 +215,7 @@ public class Main extends AppCompatActivity {
 
         ModelWholeRoom m3 = new  ModelWholeRoom();
         m3.roomImage = R.drawable.bedroom;
-        m3.roomName = "Bed smart_home.RoomItem 2";
+        m3.roomName = "Bed room 2";
         m3.turnOnInstructions = "turnOnBedRoom2";
         m3.turnOffInstructions = "turnOffBedRoom2";
         m3.isFavourite = true;
@@ -242,7 +238,7 @@ public class Main extends AppCompatActivity {
 
         ModelWholeRoom m4 = new  ModelWholeRoom();
         m4.roomImage = R.drawable.bathroom;
-        m4.roomName = "Bath smart_home.RoomItem 1";
+        m4.roomName = "Bath room 1";
         m4.turnOnInstructions = "turnOnBathRoom1";
         m4.turnOffInstructions = "turnOffBathRoom1";
         m4.isFavourite = true;
@@ -265,7 +261,7 @@ public class Main extends AppCompatActivity {
 
         ModelWholeRoom m5 = new  ModelWholeRoom();
         m5.roomImage = R.drawable.bathroom;
-        m5.roomName = "Bath smart_home.RoomItem 2";
+        m5.roomName = "Bath room 2";
         m5.turnOnInstructions = "turnOnBathRoom2";
         m5.turnOffInstructions = "turnOffBathRoom2";
         m5.isFavourite = false;
@@ -284,22 +280,12 @@ public class Main extends AppCompatActivity {
 
         RoomControl.allRoomsData.add(m5);
 
-
-
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(task -> {
                     if (!task.isSuccessful()) {
                         Log.w("TAG", "Fetching FCM registration token failed", task.getException());
                         return;
                     }
-
-                    // Get new FCM registration token
-                    String token = task.getResult();
-
-                    // Log and toast
-                    //String msg = getString(R.string.msg_token_fmt, token);
-                    System.out.println("DeviceToken is " + token);
-                    Toast.makeText(getApplicationContext(), token, Toast.LENGTH_SHORT).show();
                 });
 
 
@@ -321,7 +307,7 @@ public class Main extends AppCompatActivity {
         try {
             fos = new FileInputStream(alice);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
 
         if(fos != null)

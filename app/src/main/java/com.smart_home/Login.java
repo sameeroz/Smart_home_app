@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        // Initialization variables
+        // Initialization of variables
 
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
@@ -44,7 +44,6 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userUid = "ov72QHDqY4TeF8XmftCFPz37fcq1";
 
                 if(username.getText().length() == 0 || password.getText().length() == 0)
                 {
@@ -60,13 +59,12 @@ public class Login extends AppCompatActivity {
 
                 mAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString())
                         .addOnCompleteListener( Login.this, task -> {
-                            loading.setVisibility(View.GONE);
+//                            loading.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                //updateUI(user);
 
-                               userUid = user.getUid();
+                                userUid = user.getUid();
                                 Intent intent = new Intent(Login.this, Main.class);
                                 startActivity(intent);
                             }

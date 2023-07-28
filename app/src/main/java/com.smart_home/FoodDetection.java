@@ -3,6 +3,7 @@ package com.smart_home;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -83,6 +84,7 @@ public class FoodDetection extends AppCompatActivity implements View.OnClickList
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch ((v.getId()))
@@ -290,7 +292,7 @@ public class FoodDetection extends AppCompatActivity implements View.OnClickList
             pen.setColor(Color.RED);
             pen.setStrokeWidth(8F);
             pen.setStyle(Paint.Style.STROKE);
-            RectF box = result.boundingbox;
+            RectF box = result.boundingBox;
             canvas.drawRect(box, pen);
 
             Rect tagSize = new  Rect(0, 0, 0, 0);
@@ -341,11 +343,23 @@ public class FoodDetection extends AppCompatActivity implements View.OnClickList
 
 class DetectionResult
 {
-    RectF boundingbox;
+    RectF boundingBox;
     String text;
 
-    public DetectionResult(RectF boundingbox, String text) {
-        this.boundingbox = boundingbox;
+    public DetectionResult(RectF boundingBox, String text) {
+        this.boundingBox = boundingBox;
         this.text = text;
     }
 }
+
+//    DatabaseHandler db = new DatabaseHandler(getContext());
+//
+//    db.addRecipe(new Recipe(1,"Lazanya","Tomatao, potato, cheese, pasta","boil the water and cut the cheese"));
+//
+//    List<Recipe> recipes = db.getAllRecipes();
+//
+//        for (Recipe r : recipes) {
+//                System.out.println(r.getRecipeName());
+//                System.out.println(r.getRecipeIngredients());
+//                System.out.println(r.getRecipePreparation());
+//                }

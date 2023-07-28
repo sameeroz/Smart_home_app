@@ -54,7 +54,7 @@ public class RoomsFragment extends Fragment {
     private ui.Rooms.RoomsViewModel homeViewModel;
 
     GridLayout gridLayout;
-    ProgressBar rooms_loadingbar;
+    ProgressBar roomsLoadingBar;
     ImageView roomsTryAgain;
     LinearLayout roomsTryAgainLayout;
 
@@ -65,9 +65,10 @@ public class RoomsFragment extends Fragment {
 
     private int[] imageList = {R.drawable.hallroom, R.drawable.livingroom, R.drawable.bedroom, R.drawable.bathroom};
 
-    String ip = "192.168.1.130";
-    static  String IP = "192.168.1.130";
+//    String ip = "192.168.1.130";
+//    static  String IP = "192.168.1.130";
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -78,16 +79,14 @@ public class RoomsFragment extends Fragment {
             public void onChanged(@Nullable String s) {
             }
         });
-        if(Main.action_toolbar != null)
-        {
+        if (Main.action_toolbar != null) {
 
             Main.action_toolbar.setTitle(R.string.title_room);
         }
 
 
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
-        if (SDK_INT > 8)
-        {
+        if (SDK_INT > 8) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                     .permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -97,7 +96,7 @@ public class RoomsFragment extends Fragment {
         }
 
         gridLayout = root.findViewById(R.id.grid);
-        rooms_loadingbar = root.findViewById(R.id.rooms_loadingbar);
+        roomsLoadingBar = root.findViewById(R.id.rooms_loadingbar);
         roomsTryAgainLayout = root.findViewById(R.id.rooms_try_again_layout);
         roomsTryAgain = root.findViewById(R.id.rooms_try_again);
 
@@ -107,67 +106,63 @@ public class RoomsFragment extends Fragment {
             tr.commit();
         });
 
-        if(!haveNetworkConnection())
-        {
+        if (!haveNetworkConnection()) {
             roomsTryAgainLayout.setVisibility(View.VISIBLE);
         }
 
 
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        DatabaseReference myRef = database.getReference(Login.userUid + "/hoom");
-        myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data " + Login.userUid , task.getException());
-                }
-                else {
+        // showing the dummy data entered previously in Main class(instead fetching from API)
+        for (int i = 0; i < 6; i++) {
+            gridLayout.addView(roomCard(i, RoomControl.allRoomsData.get(i).roomName, RoomControl.allRoomsData.get(i).roomImage));
+        }
+        roomsLoadingBar.setVisibility(View.GONE);
 
 
+        // fetching from Firebase API (if wanted)--------------------
 
-                    if(!task.getResult().exists())
-                    {
-                        Toast.makeText(getContext(),"لا يوجد بيانات لهذي الصفحة", Toast.LENGTH_SHORT).show();
-                        roomsTryAgainLayout.setVisibility(View.VISIBLE);
-                        return;
-                    }
-
-                   // System.out.println("childrens  ----> "+ String.valueOf(task.getResult().getChildrenCount()));
-
-
-                    int count = 0;
-                    for (DataSnapshot child : task.getResult().getChildren()) {
-                        if(child.getKey().contains("Water"))
-                        {
-                            continue;
-                        }
-                        if(child.getKey().contains("WHT API"))
-                        {
-                            continue;
-                        }
-
-                        HashMap<String, Object> deviceData = (HashMap<String, Object>) child.getValue();
-
-                        // room id
-                        Long roomIdLong = (Long) deviceData.get("id");
-                        int roomId = Math.toIntExact(roomIdLong);
-
-                        //room image
-                        Long roomImageLong = (Long) deviceData.get("imageId");
-                        int roomImage = Math.toIntExact(roomImageLong);
-
-
-                        gridLayout.addView(roomCard(roomId,child.getKey(), roomImage));
-
-                    }
-                    rooms_loadingbar.setVisibility(View.GONE);
-
-                }
-            }
-        });
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference(Login.userUid + "/home");
+//        myRef.get().addOnCompleteListener(task -> {
+//            if (!task.isSuccessful()) {
+//                Log.e("firebase", "Error getting data " + Login.userUid , task.getException());
+//            }
+//            else {
+//
+//                if(!task.getResult().exists())
+//                {
+//                    Toast.makeText(getContext(),"لا يوجد بيانات لهذي الصفحة", Toast.LENGTH_SHORT).show();
+//                    roomsTryAgainLayout.setVisibility(View.VISIBLE);
+//                    return;
+//                }
+//
+//                for (DataSnapshot child : task.getResult().getChildren()) {
+//                    if(child.getKey().contains("Water"))
+//                    {
+//                        continue;
+//                    }
+//                    if(child.getKey().contains("WHT API"))
+//                    {
+//                        continue;
+//                    }
+//
+//                    HashMap<String, Object> deviceData = (HashMap<String, Object>) child.getValue();
+//
+//                    // room id
+//                    Long roomIdLong = (Long) deviceData.get("id");
+//                    int roomId = Math.toIntExact(roomIdLong);
+//
+//                    //room image
+//                    Long roomImageLong = (Long) deviceData.get("imageId");
+//                    int roomImage = Math.toIntExact(roomImageLong);
+//
+//
+//                    gridLayout.addView(roomCard(roomId,child.getKey(), roomImage));
+//
+//                }
+//                roomsLoadingBar.setVisibility(View.GONE);
+//
+//            }
+//        });
 
         // Card View Click listeners
 
@@ -258,23 +253,21 @@ public class RoomsFragment extends Fragment {
         return root;
     }
 
-    private CardView roomCard(int id, String roomName, int imageId)
-    {
+    private CardView roomCard(int id, String roomName, int imageId) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager()
                 .getDefaultDisplay()
                 .getMetrics(displayMetrics);
 
-        Rect rectgle= new Rect();
-        Window window= ((Activity) getContext()).getWindow();
-        window.getDecorView().getWindowVisibleDisplayFrame(rectgle);
-        int statusBarHeight= rectgle.top;
+        Rect rectangle = new Rect();
+        Window window = ((Activity) getContext()).getWindow();
+        window.getDecorView().getWindowVisibleDisplayFrame(rectangle);
+        int statusBarHeight = rectangle.top;
 
 
         String deviceMan = android.os.Build.MANUFACTURER;
 
-        if (!deviceMan.equalsIgnoreCase("Xiaomi"))
-        {
+        if (!deviceMan.equalsIgnoreCase("Xiaomi")) {
             statusBarHeight = 0;
         }
 
@@ -284,7 +277,7 @@ public class RoomsFragment extends Fragment {
         CardView cardView = new CardView(getContext());
         cardView.setRadius(30);
         cardView.setCardBackgroundColor(getResources().getColor(R.color.login_btn_color));
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams( (width / 2 ) - 80, (height / 3 ) - 200);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams((width / 2) - 80, (height / 3) - 200);
         lp.setMargins(25, 10, 25, 35);
         cardView.setRadius(60);
         cardView.setCardElevation(15);
@@ -294,13 +287,14 @@ public class RoomsFragment extends Fragment {
         // Vertical Linear Layout
 
         LinearLayout inner_linearLayout = new LinearLayout(getContext());
-        LinearLayout.LayoutParams layoutPara = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , LinearLayout.LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams layoutPara = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         inner_linearLayout.setOrientation(LinearLayout.VERTICAL);
 
 
         // Create Image
         ImageView img = new ImageView(getContext());
-        img.setImageResource(imageList[imageId]);
+//        img.setImageResource(imageList[imageId]);
+        img.setImageResource(imageId);
         LinearLayout.LayoutParams imgLayout = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -310,7 +304,6 @@ public class RoomsFragment extends Fragment {
         img.setTransitionName("robot");
 
         inner_linearLayout.addView(img);  // insert Image card into inner linear layout
-
 
 
         // Creating Device text
@@ -328,17 +321,14 @@ public class RoomsFragment extends Fragment {
         inner_linearLayout.addView(titleText);
         cardView.addView(inner_linearLayout);
 
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RoomItem.class);
-                ActivityOptions options = ActivityOptions
-                        .makeSceneTransitionAnimation(getActivity(), img, "robot");
-                RoomControl.roomImage = img.getDrawable();
-                RoomControl.roomNumber = id;
-                intent.putExtra("smart_home.RoomItem Name",roomName);
-                startActivity(intent, options.toBundle());
-            }
+        cardView.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), RoomItem.class);
+            ActivityOptions options = ActivityOptions
+                    .makeSceneTransitionAnimation(getActivity(), img, "robot");
+            RoomControl.roomImage = img.getDrawable();
+            RoomControl.roomNumber = id;
+            intent.putExtra("Room Name", roomName);
+            startActivity(intent, options.toBundle());
         });
 
 

@@ -154,7 +154,7 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:weightSum="1"
-                android:onClick="favoutite"
+                android:onClick="favourite"
                 android:focusable="true">
 
                 <ImageView

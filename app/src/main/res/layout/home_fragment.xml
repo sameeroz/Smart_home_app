@@ -110,7 +110,7 @@
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:layout_gravity="center_horizontal"
-                                                    android:text="4"
+                                                    android:text="0"
                                                     app:autoSizeTextType="uniform"
                                                     app:autoSizeMinTextSize="20sp"
                                                     app:autoSizeMaxTextSize="30sp"
@@ -221,7 +221,7 @@
         <com.scwang.wave.MultiWaveHeader
             android:id="@+id/tank"
             android:layout_width="0px"
-            android:layout_height="0px"
+            android:layout_height="400px"
             app:layout_constraintBottom_toBottomOf="@+id/photo_tank"
             app:layout_constraintLeft_toLeftOf="@+id/photo_tank"
             app:layout_constraintRight_toRightOf="@+id/photo_tank"
@@ -296,7 +296,7 @@
                             android:id="@+id/waterpercent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
+                            android:text="80"
                             android:gravity="center_vertical|center_horizontal"
                             android:textColor="@color/white"
                             android:textSize="26sp" />

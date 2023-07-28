@@ -9,7 +9,6 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,6 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -27,21 +25,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.smart_home.DatabaseHandler.DatabaseHandler;
-import com.smart_home.DatabaseHandler.Recipe;
-import com.smart_home.Login;
 import com.smart_home.Main;
 import com.smart_home.ModelWholeRoom;
 import com.smart_home.R;
-
 import com.smart_home.RoomControl;
 import com.smart_home.RoomItem;
-
-import java.util.HashMap;
-import java.util.List;
 
 public class FavouriteFragment extends Fragment {
 
@@ -51,7 +39,6 @@ public class FavouriteFragment extends Fragment {
     TextView txt;
     ImageView favTryAgain;
     LinearLayout favTryAgainLayout;
-    int a = 0;
     private boolean firstInitialize = false;
     private int[] imageList = {R.drawable.hallroom, R.drawable.livingroom, R.drawable.bedroom, R.drawable.bathroom};
 
@@ -72,24 +59,22 @@ public class FavouriteFragment extends Fragment {
         favTryAgainLayout = root.findViewById(R.id.fav_try_again_layout);
         favTryAgain = root.findViewById(R.id.fav_try_again);
 
-       /* for (int i = 0; i < RoomControl.allRoomsData.size(); i++)
-        {
-            if(RoomControl.allRoomsData.get(i).isFavourite)
-            {
-                txt.setVisibility(View.GONE);
-            }
+//        for (int i = 0; i < RoomControl.allRoomsData.size(); i++)
+//        {
+//            if(RoomControl.allRoomsData.get(i).isFavourite)
+//            {
+//                txt.setVisibility(View.GONE);
+//            }
+//        }
 
-        }*/
-
-        /*for (int i = 0; i < RoomControl.allRoomsData.size(); i++)
+        for (int i = 0; i < RoomControl.allRoomsData.size(); i++)
         {
             m = RoomControl.allRoomsData.get(i);
             if(m.isFavourite)
             {
-                System.out.println(m.roomName+"........"+m.isFavourite);
                 favouriteGrid.addView(addRoom(i,m));
             }
-        }*/
+        }
 
         favTryAgain.setOnClickListener(v -> {
             FragmentTransaction tr = getFragmentManager().beginTransaction();
@@ -101,67 +86,54 @@ public class FavouriteFragment extends Fragment {
         {
             favTryAgainLayout.setVisibility(View.VISIBLE);
         }
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Home 1/"+ Login.userUid);
-        myRef.get().addOnCompleteListener(task -> {
-
-            if (!task.isSuccessful()) {
-                Log.e("firebase", "Error getting data", task.getException());
-                favTryAgainLayout.setVisibility(View.VISIBLE);
-                return;
-            }
-            else {
-
-                if(!task.getResult().exists())
-                {
-                    Toast.makeText(getContext(),"لا يوجد بيانات لهذي الصفحة", Toast.LENGTH_SHORT).show();
-                    favTryAgainLayout.setVisibility(View.VISIBLE);
-                    return;
-                }
-
-                int count = 0;
-                for (DataSnapshot child : task.getResult().getChildren()) {
-
-                    if(child.getKey().contains("Water"))
-                    {
-                        continue;
-                    }
-                    if(child.getKey().contains("WHT API"))
-                    {
-                        continue;
-                    }
-
-                    HashMap<String, Object> roomData = (HashMap<String, Object>) child.getValue();
-                    boolean isFav = (boolean) roomData.get("isFavourite");
-
-                    if(isFav)
-                    {
-                            txt.setVisibility(View.GONE);
-                            Long idLong = (Long) roomData.get("id");
-                            int id = Math.toIntExact(idLong);
-
-                            Long imageIdLong = (Long) roomData.get("imageId");
-                            int imageId = Math.toIntExact(imageIdLong);
-
-                            favouriteGrid.addView(roomCard(id,child.getKey(), imageId));
-                    }
-                }
-            }
-        });
-
-        DatabaseHandler db = new DatabaseHandler(getContext());
-
-        //db.addRecipe(new Recipe(1,"Lazanya","Tomatao, potato, cheese, pasta","boil the water and cut the cheese"));
-
-        List<Recipe> recipes = db.getAllRecipes();
-
-        for (Recipe r : recipes) {
-            System.out.println(r.getRecipeName());
-            System.out.println(r.getRecipeIngredients());
-            System.out.println(r.getRecipePreparation());
-        }
-
+//
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("Home 1/"+ Login.userUid);
+//        myRef.get().addOnCompleteListener(task -> {
+//
+//            if (!task.isSuccessful()) {
+//                Log.e("firebase", "Error getting data", task.getException());
+//                favTryAgainLayout.setVisibility(View.VISIBLE);
+//                return;
+//            }
+//            else {
+//
+//                if(!task.getResult().exists())
+//                {
+//                    Toast.makeText(getContext(),"لا يوجد بيانات لهذي الصفحة", Toast.LENGTH_SHORT).show();
+//                    favTryAgainLayout.setVisibility(View.VISIBLE);
+//                    return;
+//                }
+//
+//                int count = 0;
+//                for (DataSnapshot child : task.getResult().getChildren()) {
+//
+//                    if(child.getKey().contains("Water"))
+//                    {
+//                        continue;
+//                    }
+//                    if(child.getKey().contains("WHT API"))
+//                    {
+//                        continue;
+//                    }
+//
+//                    HashMap<String, Object> roomData = (HashMap<String, Object>) child.getValue();
+//                    boolean isFav = (boolean) roomData.get("isFavourite");
+//
+//                    if(isFav)
+//                    {
+//                            txt.setVisibility(View.GONE);
+//                            Long idLong = (Long) roomData.get("id");
+//                            int id = Math.toIntExact(idLong);
+//
+//                            Long imageIdLong = (Long) roomData.get("imageId");
+//                            int imageId = Math.toIntExact(imageIdLong);
+//
+//                            favouriteGrid.addView(roomCard(id,child.getKey(), imageId));
+//                    }
+//                }
+//            }
+//        });
 
         firstInitialize = true;
         return root;
@@ -182,44 +154,13 @@ public class FavouriteFragment extends Fragment {
         lp.setMargins(30,0,20,30);
         cardView.setLayoutParams(lp);
         cardView.setOnClickListener(v -> {
-            if ("Hall smart_home.RoomItem".equalsIgnoreCase(modelWholeRoom.roomName)) {
                 Intent intent = new Intent(getContext(), RoomItem.class);
                 intent.putExtra("image",modelWholeRoom.roomImage);
+                RoomControl.roomImage = getResources().getDrawable(modelWholeRoom.roomImage);
                 RoomControl.roomNumber = index;
                 startActivity(intent);
                 onDestroy();
-            }
-            else if ("Living smart_home.RoomItem".equalsIgnoreCase(modelWholeRoom.roomName)) {
-                Intent intent = new Intent(getContext(), RoomItem.class);
-                intent.putExtra("image",modelWholeRoom.roomImage);
-                RoomControl.roomNumber = index;
-                startActivity(intent);
-            }
-            else if ("Bed smart_home.RoomItem 1".equalsIgnoreCase(modelWholeRoom.roomName)) {
-                Intent intent = new Intent(getContext(), RoomItem.class);
-                intent.putExtra("image",modelWholeRoom.roomImage);
-                RoomControl.roomNumber = index;
-                startActivity(intent);
 
-            }
-            else if ("Bed smart_home.RoomItem 2".equalsIgnoreCase(modelWholeRoom.roomName)) {
-                Intent intent = new Intent(getContext(), RoomItem.class);
-                intent.putExtra("image",modelWholeRoom.roomImage);
-                RoomControl.roomNumber = index;
-                startActivity(intent);
-            }
-            else if ("Bath smart_home.RoomItem 1".equalsIgnoreCase(modelWholeRoom.roomName)) {
-                Intent intent = new Intent(getContext(), RoomItem.class);
-                intent.putExtra("image",modelWholeRoom.roomImage);
-                RoomControl.roomNumber = index;
-                startActivity(intent);
-            }
-            else if ("Bath smart_home.RoomItem 2".equalsIgnoreCase(modelWholeRoom.roomName)) {
-                Intent intent = new Intent(getContext(), RoomItem.class);
-                intent.putExtra("image",modelWholeRoom.roomImage);
-                RoomControl.roomNumber = index;
-                startActivity(intent);
-            }
         });
 
         LinearLayout.LayoutParams card_param = new LinearLayout.LayoutParams(
@@ -380,10 +321,8 @@ public class FavouriteFragment extends Fragment {
             FragmentTransaction tr = getFragmentManager().beginTransaction();
             tr.replace(R.id.nav_host_fragment, newInstance());
             tr.commit();
-            System.out.println("eeeeeee");
         }
 
-        System.out.println("ssssss");
     }
      @Override
     public void onPause() {
