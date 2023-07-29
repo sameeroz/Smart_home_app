@@ -1,5 +1,4 @@
 # Smart home android app
-&nbsp;
 ### This app is designed to control a home wirelessly by using firebase and ThingSpeak Iot APIs
 &nbsp;
 ## Features
