@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.smart_home.HomeFragment"
+    tools:context=".main_fragments.Home"
     android:textColor="@color/text_color"
     android:paddingTop="60dp">
 
@@ -228,7 +228,7 @@
             android:layout_marginHorizontal="5dp"
             android:layout_marginBottom="11.8dp"
             android:rotation="180"
-            app:mwhStartColor="@color/primarybgcolor"
+            app:mwhStartColor="@color/primaryBgColor"
             app:mwhWaveHeight="5dp"
             app:mwhVelocity="5"
             app:mwhShape="RoundRect"
@@ -267,7 +267,7 @@
             app:cv_subtitleColor="@color/white"
             app:cv_titleSubtitleSpace="30"
             app:cv_strokeColorValue="@color/login_btn_color"
-            app:cv_backgroundColorValue="@color/primarybgcolor"
+            app:cv_backgroundColorValue="@color/primaryBgColor"
             app:cv_fillColor="@color/login_btn_color"
             app:cv_fillRadius="0.9"
             app:cv_strokeWidthSize="2"/>

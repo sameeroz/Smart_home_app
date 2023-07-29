@@ -35,8 +35,6 @@
             </intent-filter>
         </service>
 
-        <activity android:name="com.smart_home.FoodDetection" />
-
         <receiver
             android:name="com.smart_home.Devices_ReceiverCall_Classes.DeviceReceiverCall5"
             android:enabled="true"
@@ -198,9 +196,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="com.smart_home.RoomItem" />
-        <activity android:name="com.smart_home.Settings" />
-        <activity android:name="com.smart_home.Main" />
+        <activity android:name=".Room" />
+        <activity android:name="Settings" />
+        <activity android:name="Main" />
     </application>
 
 </manifest>

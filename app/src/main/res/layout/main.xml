@@ -5,13 +5,12 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.smart_home.Main">
+    tools:context="Main">
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/drawers"
-        tools:context="MainActivity">
+        android:id="@+id/drawers">
 
         <include
             layout="@layout/navigation_contents"

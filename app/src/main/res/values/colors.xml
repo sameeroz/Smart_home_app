@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primarybgcolor">#4D70AFCE</color>
+    <color name="primaryBgColor">#4D70AFCE</color>
     <color name="primary_text_color">#4189ab</color>
     <color name="text_color">#A5DEF1</color>
     <color name="purple_200">#FFBB86FC</color>

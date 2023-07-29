@@ -7,7 +7,7 @@
 
     <nl.joery.animatedbottombar.AnimatedBottomBar
         android:id="@+id/bottom_bar"
-        android:background="@color/primarybgcolor"
+        android:background="@color/primaryBgColor"
         android:layout_width="match_parent"
         android:layout_height="57dp"
         app:abb_tabColorSelected="@color/black"

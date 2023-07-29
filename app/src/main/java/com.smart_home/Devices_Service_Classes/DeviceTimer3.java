@@ -29,7 +29,7 @@ import java.util.TimerTask;
 
 public class DeviceTimer3 extends Service {
     private String TAG = "DeviceService3";
-    public static final String Timer_Countdown = "smart_home.ui.timer";
+    public static final String Timer_Countdown = "smart_home.main_fragments.timer";
     Intent intent = new Intent(Timer_Countdown);
     Timer timer;
     public static TimerTask timerTask;

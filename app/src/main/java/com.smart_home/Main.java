@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,7 +22,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.messaging.FirebaseMessaging;
+import com.smart_home.Model_Class.DeviceData;
+import com.smart_home.Model_Class.ModelWholeRoom;
+import com.smart_home.Model_Class.RoomControl;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -118,7 +119,7 @@ public class Main extends AppCompatActivity {
         });
 
 
-        action_toolbar.setBackgroundColor(getResources().getColor(R.color.primarybgcolor));
+        action_toolbar.setBackgroundColor(getResources().getColor(R.color.primaryBgColor));
         action_toolbar.setTitleTextColor(getResources().getColor(R.color.primary_text_color));
         action_toolbar.setTitle(getText(R.string.app_name));
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,action_toolbar,R.string.open,R.string.close);
@@ -132,10 +133,7 @@ public class Main extends AppCompatActivity {
             {
                 case "Settings":
                 case "Contact us":
-                    break;
-                case "Food Detector":
-                    Intent i = new Intent(getApplicationContext(), FoodDetection.class);
-                    startActivity(i);
+                    System.out.println("TODO");
                     break;
                 default:
             }
@@ -153,14 +151,12 @@ public class Main extends AppCompatActivity {
         m.turnOnInstructions = "turnOnHallRoom";
         m.turnOffInstructions = "turnOffHallRoom";
         m.isFavourite = true;
-        //m.roomDevices.put(0,new smart_home.DeviceData(R.drawable.tv,"TV"
-               // , m.roomName, m.turnOnInstructions+"-tv",m.turnOffInstructions+"-tv"));
 
         m.roomDevices.put(0,new DeviceData(R.drawable.bulb,"lamp 1"
                 , m.roomName, m.turnOnInstructions+"-lamp 1",m.turnOffInstructions+"-lamp 1"));
 
-        //m.roomDevices.put(2,new smart_home.DeviceData(R.drawable.sock,"Socket 1"
-                //, m.roomName, m.turnOnInstructions+"-Socket 1",m.turnOffInstructions+"-Socket 1"));
+        m.roomDevices.put(1,new DeviceData(R.drawable.sock,"Socket 1"
+                , m.roomName, m.turnOnInstructions+"-Socket 1",m.turnOffInstructions+"-Socket 1"));
 
         RoomControl.allRoomsData.add(m);
 
@@ -196,13 +192,8 @@ public class Main extends AppCompatActivity {
         m2.turnOffInstructions = "turnOffBedRoom1";
         m2.isFavourite = false;
 
-
-       // m2.roomDevices.put(0,new smart_home.DeviceData(R.drawable.bulb,"lamp 1"
-               // , m2.roomName, m2.turnOnInstructions+"-lamp 1",m2.turnOffInstructions+"-lamp 1"));
-
         m2.roomDevices.put(0,new DeviceData(R.drawable.sock,"Socket 1"
                 , m2.roomName, m1.turnOnInstructions+"-Socket 1",m2.turnOffInstructions+"-Socket 1"));
-
 
         m2.roomDevices.put(1,new DeviceData(R.drawable.tv,"TV"
                 , m2.roomName, m2.turnOnInstructions+"-tv",m2.turnOffInstructions+"-tv"));
@@ -250,10 +241,6 @@ public class Main extends AppCompatActivity {
                 , m4.roomName, m4.turnOnInstructions+"-Socket 1",m4.turnOffInstructions+"-Socket 1"));
 
 
-       // m3.roomDevices.put(2,new smart_home.DeviceData(R.drawable.tv,"TV"
-              //  , m3.roomName, m3.turnOnInstructions+"-tv",m3.turnOffInstructions+"-tv"));
-
-
         RoomControl.allRoomsData.add(m4);
 
         // BathRoom 2
@@ -273,19 +260,16 @@ public class Main extends AppCompatActivity {
         m5.roomDevices.put(1,new DeviceData(R.drawable.bulb,"lamp 1"
                 , m5.roomName, m5.turnOnInstructions+"-lamp 1",m5.turnOffInstructions+"-lamp 1"));
 
-        // m3.roomDevices.put(2,new smart_home.DeviceData(R.drawable.tv,"TV"
-              //  , m3.roomName, m3.turnOnInstructions+"-tv",m3.turnOffInstructions+"-tv"));
-
 
         RoomControl.allRoomsData.add(m5);
 
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                        Log.w("TAG", "Fetching FCM registration token failed", task.getException());
-                        return;
-                    }
-                });
+//        FirebaseMessaging.getInstance().getToken()
+//                .addOnCompleteListener(task -> {
+//                    if (!task.isSuccessful()) {
+//                        Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+//                        return;
+//                    }
+//                });
 
 
     }
@@ -319,4 +303,87 @@ public class Main extends AppCompatActivity {
         String s1 = sh.getString("name", "");
         profileName.setText(s1);
     }
+
+
+    //This function was created for controlling the home locally
+    // without internet using the network
+
+
+//    void instructionSenter(String message)
+//    {
+//        boolean condition = false;
+//        int counter = 0;
+//
+//        Socket socket = null;
+//
+//        try {
+//            socket = new Socket(IP,81);
+//        } catch (IOException ex) {
+//            condition = true;
+//            return;
+//        }
+//        if(condition)
+//        {
+//            try {
+//                socket.close();
+//            } catch (IOException ex) {
+//                System.out.println("wrong ");
+//            }
+//            return;
+//        }
+//
+//        System.out.println("Done Sending Message");
+//
+//        BufferedWriter out = null;
+//        try {
+//            out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+//            out.write(message);
+//            out.flush();
+//            socket.close();
+//        } catch (IOException ex) {
+//
+//        }
+//
+//    }
+
+
+       /* send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //instructionSenter("1");
+                    Socket s = null;
+                    try {
+                        s = new Socket(ip,81);
+                    } catch (IOException ex) {
+                        System.out.println("Wrong IP Address");
+                        Toast.makeText(getApplicationContext(),"Wrong IP Address\nPlease write a correct one",Toast. LENGTH_SHORT).show();
+                        return;
+                    }
+                    DataOutputStream out = null;
+                    try {
+                        out = new DataOutputStream(s.getOutputStream());
+                    } catch (IOException ex) {
+                        Toast.makeText(getApplicationContext(),"Cannot send data to arduino\nPlease write a correct one",Toast. LENGTH_SHORT).show();
+                        return;
+                    }
+                Toast.makeText(getApplicationContext(),"\"Sending Message...\"\nPlease write a correct one",Toast. LENGTH_SHORT).show();
+                    try {
+                        out.writeUTF(message.getText().toString());
+                        out.flush();
+                    } catch (IOException ex) {
+                        Toast.makeText(getApplicationContext(),"\"Sending error...\"\nPlease write a correct one",Toast. LENGTH_SHORT).show();
+                        return;
+                    }
+                try {
+                    s.close();
+                    Toast.makeText(getApplicationContext(),"\"Done Sending...\"\nPlease write a correct one",Toast. LENGTH_SHORT).show();
+
+                } catch (IOException e) {
+                    Toast.makeText(getApplicationContext(),"\"Cannot close...\"\nPlease write a correct one",Toast. LENGTH_SHORT).show();
+                    return;
+                }
+
+                return;
+                }
+        });*/
 }

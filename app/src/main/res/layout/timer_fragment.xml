@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.smart_home.timer.TimerFragment"
+    tools:context="com.smart_home.main_fragments.timer.TimerFragment"
     android:paddingTop="?attr/actionBarSize"
     android:background="@android:color/transparent">
 
