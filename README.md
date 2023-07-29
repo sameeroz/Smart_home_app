@@ -4,8 +4,10 @@
 &nbsp;
 ## Features
 ### 1- Turn on and off any device.
-### 2- Monitors the water tank continously and informs using a notification if under sertain level.
+### 2- Monitors the water tank continously and informs using a notification if under certain level.
 ### 3- Timers for a single device or for the whole room whether to turn on or off.
 ### 4- Monitor the number of running devices.
+&nbsp;
+## Screenshots
 
 
